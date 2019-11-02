@@ -5,7 +5,7 @@ const unsigned int interval = 1000;
 
 /* text to show if no value can be retrieved */
 /* static const char unknown_str[] = "n/a"; */
-static const char unknown_str[] = "";
+static const char unknown_str[] = "0";
 
 /* maximum output string length */
 #define MAXLEN 2048
@@ -67,10 +67,10 @@ static const struct arg args[] = {
 	/* function format          argument */
 	/* inbox   */
 	/* 	calendar */
- 	/* { run_command,  " %s | ", "calcurse | awk '/^  *1/' | wc -l" }, */
- 	{ run_command,  " %s | ", "du -a .local/share/mail/*/INBOX/new/* 2>/dev/null | sed -n '$='" },
- 	{ run_command,  " %s | ", "checkstatusgit --count" },
- 	/* { run_command,  " %s | ", "amixer sget Master | awk -F\"[][]\" '/%/ { print $2 }' | head -n1" }, */
+ 	{ run_command,  " %s | ", "calcurse -a | awk '/^  */' | wc -l" },
+ 	{ run_command,  " %s | ", "du -a .local/share/mail/*/INBOX/new/* 2>/dev/null | sed -n '$='" },
+ 	{ run_command,  " %s | ", "checkstatusgit --count" },
+ 	{ run_command,  " %s | ", "pamixer --get-volume" },
  	{ battery_perc, " %s% | ", "BAT0" },
 	{ datetime,     " %s",     "%a %b %e %H:%M" },
 
